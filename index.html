@@ -3,24 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Special Question for Mudulaaa 🐥🐣</title>
+    <title>Propose Day - Chimani 🐥</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <audio id="background-music" loop>
-        <source src="song.mp3" type="audio/mp3">
-    </audio>
-    
     <div class="container">
-        <h1>Will you be mine forever, Mudulaaa? 🐥🐣</h1>
-        <button id="yes-button">YES</button>
-        <button id="no-button">NO</button>
-        <p id="message"></p>
-        <div id="calendar-container" style="display: none;">
-            <label for="date-picker">Since you insist, pick a date:</label>
+        <h1 class="title">Will you be my forever Chimani? 🐥💖</h1>
+        <p id="message" class="message">Choose wisely! 😏</p>
+        <div class="buttons">
+            <button id="yes-button">Yes 💖</button>
+            <button id="no-button">No ❌</button>
+        </div>
+        <div id="calendar-container" class="hidden">
+            <p>Select the date when you will say 'Yes' 😉</p>
             <input type="date" id="date-picker">
         </div>
+        <p id="final-message" class="hidden">Best Decision Ever! 🎉💑</p>
     </div>
+
+    <!-- Background Music -->
+    <audio id="background-music" autoplay loop>
+        <source src="romantic_music.mp3" type="audio/mp3">
+    </audio>
 
     <script src="script.js"></script>
 </body>
