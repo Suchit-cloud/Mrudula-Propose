@@ -32,9 +32,48 @@ yesBtn.addEventListener('click', () => {
 });
 
 datePicker.addEventListener('change', () => {
+  const selectedDateValue = new Date(datePicker.value);
+  const year = selectedDateValue.getFullYear();
+  const month = selectedDateValue.getMonth() + 1; // Months are 0-indexed
+  const day = selectedDateValue.getDate();
+
+  let message = "";
+
+  // Check for specific date conditions
+  if (year < 2025 || (year === 2025 && month < 5)) {
+    message = "So you wanna say yes while we’re still in the same city? I like the efficiency! 🤭";
+  } else if (year === 2025 && month === 11) {
+    message = "Wow, you’re planning to multitask? Say ‘Yes’ while solving FR papers? Impressive! 😂";
+  } else if (year === 2026 && month === 1) {
+    message = "Ohhh, so you wanna be a Chartered Accountant before you say Yes? AIR-ranged marriage planning, huh? 😆";
+  } else if (month === 2 && day === 14) {
+    message = "Aww, going traditional? But come on, we’re cooler than that! 😉";
+  } else if (year > 2026) {
+    message = getRandomFutureMessage();
+    // Reset the calendar for future dates
+    datePicker.value = "";
+    calendar.classList.remove('hidden');
+    finalMessage.classList.add('hidden');
+    alert(message);
+    return;
+  } else {
+    message = "Hmm, a long-distance ‘Yes’? That’s deep, Muduluuu! But are you sure?";
+  }
+
+  finalMessage.innerHTML = `<h2>${message}</h2>`;
   finalMessage.classList.remove('hidden');
-  selectedDate.textContent = datePicker.value;
 });
+
+function getRandomFutureMessage() {
+  const futureMessages = [
+    "Damn, Chimani! Planning for the future like a government budget? 😳 You want me to wait that long?!",
+    "At this rate, even Google will forget the meaning of ‘Yes’ before you confirm! 😂",
+    "By that time, AI will be so advanced, a robot might propose to me first! Should I wait or upgrade? 😆",
+    "Chalo, let’s set a reminder: ‘Mrudula will say yes in 2028.’ Hope I still remember the password to this website! 🤭",
+    "Okay okay, I get it! You love suspense. But let’s be a tiny bit realistic, Chimani! Try again. 😏"
+  ];
+  return futureMessages[Math.floor(Math.random() * futureMessages.length)];
+}
 
 function moveButton() {
   const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
