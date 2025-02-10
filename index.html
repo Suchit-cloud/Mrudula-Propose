@@ -4,19 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Special Question for Mudulaaa 🐥🐣</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #e3f2fd;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+        }
+        h1 {
+            color: #0d47a1;
+        }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+            position: relative;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 10px;
+        }
+        #yesBtn {
+            background-color: #4caf50;
+            color: white;
+        }
+        #noBtn {
+            background-color: #f44336;
+            color: white;
+            position: absolute;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #d32f2f;
+        }
+        #calendar {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Mudulaaa 🐥🐣, Will you be mine forever?</h1>
-        <button id="yesButton">Yes</button>
-        <button id="noButton">No</button>
-        <p id="message"></p>
-        <div id="calendarContainer" style="display: none;">
-            <h2>Select a Date:</h2>
-            <input type="date" id="datePicker">
+        <h1>Will you say YES, Mudulaaa 🐥🐣?</h1>
+        <div class="buttons">
+            <button id="yesBtn">YES</button>
+            <button id="noBtn">NO</button>
         </div>
+        <p id="message"></p>
+        <input type="date" id="calendar">
     </div>
-    <script src="script.js"></script>
+    
+    <script>
+        let noClickCount = 0;
+        const messages = [
+            "Mudulaaa, tuza uttar chuktay! 😏",
+            "Chukicha rasta pakadlas tar kay hoil mahitie ka? 🤨",
+            "Ekda parat vichar kar! 😜",
+            "Thoda tari dilacha aavaaz aik! ❤️"
+        ];
+
+        const noBtn = document.getElementById("noBtn");
+        const message = document.getElementById("message");
+        const yesBtn = document.getElementById("yesBtn");
+        const calendar = document.getElementById("calendar");
+
+        noBtn.addEventListener("mouseover", function() {
+            if (noClickCount < messages.length) {
+                const maxX = window.innerWidth / 2 - 100;
+                const maxY = window.innerHeight / 2 - 100;
+                const randomX = Math.random() * maxX - maxX / 2;
+                const randomY = Math.random() * maxY - maxY / 2;
+                noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            }
+        });
+
+        noBtn.addEventListener("click", function() {
+            if (noClickCount < messages.length) {
+                message.textContent = messages[noClickCount];
+                noClickCount++;
+            } else {
+                message.textContent = "Areeee, barach zale! Ata tar ek date select kar! 🙄";
+                calendar.style.display = "block";
+                noBtn.style.display = "none";
+                yesBtn.style.display = "none";
+            }
+        });
+    </script>
 </body>
 </html>
