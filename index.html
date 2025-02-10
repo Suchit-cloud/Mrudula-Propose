@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Special Proposal</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propose Day - Mrudula</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Hey Chimani! 🐥</h1>
-        <p>Will you go out with me?</p>
-        <div class="button-container">
-            <button id="yes-btn">Yes</button>
-            <button id="no-btn">No</button>
-        </div>
-        <p id="response-message"></p>
-        <div id="calendar-container" class="hidden">
-            <p>Fine, pick a date then! 📅</p>
-            <input type="date" id="date-picker">
-        </div>
+  <div class="container">
+    <h1>Will You Go on a Date With Me?</h1>
+    <div class="doodles">
+      <img src="assets/doodle1.png" alt="YJHD Doodle" class="doodle">
+      <img src="assets/doodle2.png" alt="Domino's Doodle" class="doodle">
+      <img src="assets/doodle3.png" alt="Bike Ride Doodle" class="doodle">
+    </div>
+    <div class="buttons">
+      <button id="yes-btn">Yes</button>
+      <button id="no-btn">No</button>
+    </div>
+    <div id="calendar" class="hidden">
+      <h2>Okay fine, you’re really stubborn… but you have no choice. Just pick a date! 😏</h2>
+      <input type="date" id="date-picker">
+    </div>
+    <div id="final-message" class="hidden">
+      <h2>Yay! You just secured a lifetime partnership with the best shareholder (Me) 💍. Now, let’s finalize the merger agreement 😘.</h2>
     </div>
     <audio id="background-music" loop>
-        <source src="music.mp3" type="audio/mp3">
+      <source src="assets/music.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
     </audio>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
