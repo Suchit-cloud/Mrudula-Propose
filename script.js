@@ -1,37 +1,45 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const yesButton = document.getElementById("yesButton");
-    const noButton = document.getElementById("noButton");
+    const yesButton = document.getElementById("yes-button");
+    const noButton = document.getElementById("no-button");
     const message = document.getElementById("message");
-    const calendarContainer = document.getElementById("calendarContainer");
+    const calendarContainer = document.getElementById("calendar-container");
+    const datePicker = document.getElementById("date-picker");
+    const music = document.getElementById("background-music");
 
     let noClickCount = 0;
+    let noMessages = [
+        "Wait... Did you just click NO? 😳",
+        "Think about our **IPO Partnership**! 📈 We can't break it like this! 💔",
+        "Who else will drink **hot chocolate** with you while judging people? ☕🤭",
+        "Oh, so you're choosing **No**? Great, now I'm keeping all the **food** to myself. 🍕😏",
+        "Are you really going to reject the **CEO of Chimani Industries?** 🐥💼",
+        "Fine, fine. If you're this stubborn, then **pick a date!** 🗓️"
+    ];
 
-    noButton.addEventListener("mouseover", function () {
-        const x = Math.random() * (window.innerWidth - 100);
-        const y = Math.random() * (window.innerHeight - 100);
-        noButton.style.left = `${x}px`;
-        noButton.style.top = `${y}px`;
+    // Play music when page loads
+    music.play().catch(() => console.log("User interaction needed to play music."));
+
+    yesButton.addEventListener("click", function () {
+        message.innerHTML = "Yay! You made the right choice! 🎉💖";
+        calendarContainer.style.display = "none"; // Hide calendar if shown
     });
 
     noButton.addEventListener("click", function () {
-        noClickCount++;
-
-        if (noClickCount === 1) {
-            message.innerText = "Mudulaaa, tuza uttar chuktay! 🐥🐣";
-        } else if (noClickCount === 2) {
-            message.innerText = "Arey, vichar kar na ekda parat! 😏";
-        } else if (noClickCount === 3) {
-            message.innerText = "Shevat cha chance ahe! 😬";
-        } else if (noClickCount >= 4) {
-            message.innerText = "Tikde kahi nahi ahe, shikasta swikartay ka? 😆";
+        if (noClickCount < noMessages.length - 1) {
+            message.innerHTML = noMessages[noClickCount];
+            moveButton(noButton);
+        } else {
+            message.innerHTML = noMessages[noClickCount];
             calendarContainer.style.display = "block";
-            noButton.style.display = "none";
         }
+        noClickCount++;
     });
 
-    yesButton.addEventListener("click", function () {
-        message.innerText = "Yay! Malaa mahit hota tu hoch mhanash! 🥰🎉";
-        calendarContainer.style.display = "none";
-        noButton.style.display = "none";
-    });
+    function moveButton(button) {
+        let x = Math.random() * (window.innerWidth - 200);
+        let y = Math.random() * (window.innerHeight - 100);
+        button.style.position = "absolute";
+        button.style.left = `${x}px`;
+        button.style.top = `${y}px`;
+    }
 });
