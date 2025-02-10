@@ -3,104 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Special Question for Mudulaaa 🐥🐣</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #e3f2fd;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .container {
-            position: relative;
-        }
-        h1 {
-            color: #0d47a1;
-        }
-        .buttons {
-            margin-top: 20px;
-            display: flex;
-            gap: 20px;
-            position: relative;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 18px;
-            border: none;
-            cursor: pointer;
-            transition: 0.3s;
-            border-radius: 10px;
-        }
-        #yesBtn {
-            background-color: #4caf50;
-            color: white;
-        }
-        #noBtn {
-            background-color: #f44336;
-            color: white;
-            position: absolute;
-        }
-        #message {
-            margin-top: 20px;
-            font-size: 20px;
-            color: #d32f2f;
-        }
-        #calendar {
-            display: none;
-            margin-top: 20px;
-        }
-    </style>
+    <title>Special Question for Mudulaaa 🐥</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
+    <audio id="backgroundMusic" loop>
+        <source src="your-music-file.mp3" type="audio/mpeg">
+    </audio>
+    
     <div class="container">
-        <h1>Will you say YES, Mudulaaa 🐥🐣?</h1>
-        <div class="buttons">
-            <button id="yesBtn">YES</button>
-            <button id="noBtn">NO</button>
-        </div>
+        <h1>Mudulaaa 🐥, will you say YES?</h1>
+        <button id="yesButton">YES</button>
+        <button id="noButton">NO</button>
         <p id="message"></p>
-        <input type="date" id="calendar">
+        <div id="calendarContainer" class="hidden">
+            <label for="datePicker">Fine, pick a date:</label>
+            <input type="date" id="datePicker">
+        </div>
     </div>
     
     <script>
-        let noClickCount = 0;
-        const messages = [
-            "Mudulaaa, tuza uttar chuktay! 😏",
-            "Chukicha rasta pakadlas tar kay hoil mahitie ka? 🤨",
-            "Ekda parat vichar kar! 😜",
-            "Thoda tari dilacha aavaaz aik! ❤️"
-        ];
+        document.addEventListener("DOMContentLoaded", function () {
+            const messages = [
+                "Mudulaaa 🐥, tuza uttar chuktay, chukicha rasta pakadlas tar kay hoil mahitie ka? Ekda parat vichar kar!",
+                "He na shodhanyacha natak nako, sahi button dabav!",
+                "Kay timepass karties? Jaanun bujh kar kay karu naye!",
+                "Tu seriously 'No' dabavtes ka? Baarach motha risk ghetes!",
+                "Aga Mudulaaa 🐥, jar 'No' dabavla tar tuzi missing complaint lavin!", 
+                "Fine, tu itka insist karties tar, thik aahe, mag ek date tar select kar!"
+            ];
+            let noClickCount = 0;
+            let noButton = document.getElementById("noButton");
+            let messageBox = document.getElementById("message");
+            let calendarContainer = document.getElementById("calendarContainer");
+            let datePicker = document.getElementById("datePicker");
+            let backgroundMusic = document.getElementById("backgroundMusic");
+            let yesButton = document.getElementById("yesButton");
 
-        const noBtn = document.getElementById("noBtn");
-        const message = document.getElementById("message");
-        const yesBtn = document.getElementById("yesBtn");
-        const calendar = document.getElementById("calendar");
+            yesButton.addEventListener("click", function () {
+                messageBox.innerText = "I knew it! Mudulaaa 🐥, best decision ever!";
+                calendarContainer.classList.add("hidden");
+            });
 
-        noBtn.addEventListener("mouseover", function() {
-            if (noClickCount < messages.length) {
-                const maxX = window.innerWidth / 2 - 100;
-                const maxY = window.innerHeight / 2 - 100;
-                const randomX = Math.random() * maxX - maxX / 2;
-                const randomY = Math.random() * maxY - maxY / 2;
-                noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
-            }
-        });
+            noButton.addEventListener("mouseover", function () {
+                if (noClickCount < 4) {
+                    let x = Math.random() * (window.innerWidth - 100);
+                    let y = Math.random() * (window.innerHeight - 100);
+                    noButton.style.position = "absolute";
+                    noButton.style.left = `${x}px`;
+                    noButton.style.top = `${y}px`;
+                }
+            });
 
-        noBtn.addEventListener("click", function() {
-            if (noClickCount < messages.length) {
-                message.textContent = messages[noClickCount];
-                noClickCount++;
-            } else {
-                message.textContent = "Areeee, barach zale! Ata tar ek date select kar! 🙄";
-                calendar.style.display = "block";
-                noBtn.style.display = "none";
-                yesBtn.style.display = "none";
-            }
+            noButton.addEventListener("click", function () {
+                if (noClickCount < messages.length - 1) {
+                    messageBox.innerText = messages[noClickCount];
+                    noClickCount++;
+                } else {
+                    calendarContainer.classList.remove("hidden");
+                }
+            });
+            
+            datePicker.addEventListener("change", function () {
+                let selectedDate = new Date(datePicker.value);
+                let today = new Date();
+                if (selectedDate < today) {
+                    messageBox.innerText = "Nakalchi entry nahi chalegi, future madhe ek date ghe!";
+                } else {
+                    messageBox.innerText = `Perfect! Mi ${datePicker.value} la tayar rahin!`;
+                }
+            });
+            
+            backgroundMusic.play();
         });
     </script>
 </body>
