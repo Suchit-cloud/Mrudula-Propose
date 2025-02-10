@@ -3,80 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Special Question for Mudulaaa 🐥</title>
+    <title>Special Question for Mudulaaa 🐥🐣</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
 </head>
 <body>
-    <audio id="backgroundMusic" loop>
-        <source src="your-music-file.mp3" type="audio/mpeg">
+    <audio id="background-music" loop>
+        <source src="song.mp3" type="audio/mp3">
     </audio>
     
     <div class="container">
-        <h1>Mudulaaa 🐥, will you say YES?</h1>
-        <button id="yesButton">YES</button>
-        <button id="noButton">NO</button>
+        <h1>Will you be mine forever, Mudulaaa? 🐥🐣</h1>
+        <button id="yes-button">YES</button>
+        <button id="no-button">NO</button>
         <p id="message"></p>
-        <div id="calendarContainer" class="hidden">
-            <label for="datePicker">Fine, pick a date:</label>
-            <input type="date" id="datePicker">
+        <div id="calendar-container" style="display: none;">
+            <label for="date-picker">Since you insist, pick a date:</label>
+            <input type="date" id="date-picker">
         </div>
     </div>
-    
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const messages = [
-                "Mudulaaa 🐥, tuza uttar chuktay, chukicha rasta pakadlas tar kay hoil mahitie ka? Ekda parat vichar kar!",
-                "He na shodhanyacha natak nako, sahi button dabav!",
-                "Kay timepass karties? Jaanun bujh kar kay karu naye!",
-                "Tu seriously 'No' dabavtes ka? Baarach motha risk ghetes!",
-                "Aga Mudulaaa 🐥, jar 'No' dabavla tar tuzi missing complaint lavin!", 
-                "Fine, tu itka insist karties tar, thik aahe, mag ek date tar select kar!"
-            ];
-            let noClickCount = 0;
-            let noButton = document.getElementById("noButton");
-            let messageBox = document.getElementById("message");
-            let calendarContainer = document.getElementById("calendarContainer");
-            let datePicker = document.getElementById("datePicker");
-            let backgroundMusic = document.getElementById("backgroundMusic");
-            let yesButton = document.getElementById("yesButton");
 
-            yesButton.addEventListener("click", function () {
-                messageBox.innerText = "I knew it! Mudulaaa 🐥, best decision ever!";
-                calendarContainer.classList.add("hidden");
-            });
-
-            noButton.addEventListener("mouseover", function () {
-                if (noClickCount < 4) {
-                    let x = Math.random() * (window.innerWidth - 100);
-                    let y = Math.random() * (window.innerHeight - 100);
-                    noButton.style.position = "absolute";
-                    noButton.style.left = `${x}px`;
-                    noButton.style.top = `${y}px`;
-                }
-            });
-
-            noButton.addEventListener("click", function () {
-                if (noClickCount < messages.length - 1) {
-                    messageBox.innerText = messages[noClickCount];
-                    noClickCount++;
-                } else {
-                    calendarContainer.classList.remove("hidden");
-                }
-            });
-            
-            datePicker.addEventListener("change", function () {
-                let selectedDate = new Date(datePicker.value);
-                let today = new Date();
-                if (selectedDate < today) {
-                    messageBox.innerText = "Nakalchi entry nahi chalegi, future madhe ek date ghe!";
-                } else {
-                    messageBox.innerText = `Perfect! Mi ${datePicker.value} la tayar rahin!`;
-                }
-            });
-            
-            backgroundMusic.play();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
