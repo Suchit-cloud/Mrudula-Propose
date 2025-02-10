@@ -1,33 +1,48 @@
-const noBtn = document.getElementById("no-btn");
-const yesBtn = document.getElementById("yes-btn");
-const message = document.getElementById("response-message");
-const calendar = document.getElementById("calendar-container");
-const datePicker = document.getElementById("date-picker");
-const music = document.getElementById("background-music");
+const noBtn = document.getElementById('no-btn');
+const yesBtn = document.getElementById('yes-btn');
+const calendar = document.getElementById('calendar');
+const datePicker = document.getElementById('date-picker');
+const finalMessage = document.getElementById('final-message');
+const selectedDate = document.getElementById('selected-date');
+const music = document.getElementById('background-music');
 
-let noClickCount = 0;
+let noCount = 0;
 const messages = [
-    "Wrong choice! Try again!",
-    "Are you sure? Think again!",
-    "This is your last chance!",
-    "Fine, pick a date then!"
+  "Wrong answer! You have 3 lives left.",
+  "Congratulations! You just won another attempt! Try again 😜",
+  "Are you sure? What if this is an IPO for a lifetime partnership? You might regret missing it later! 📈❤️",
+  "Come on, we’ve judged people together in Domino’s, and you still doubt our compatibility? 😤",
+  "Okay fine, you’re really stubborn… but you have no choice. Just pick a date! 😏"
 ];
 
-noBtn.addEventListener("click", () => {
-    if (noClickCount < messages.length - 1) {
-        message.textContent = messages[noClickCount];
-        noClickCount++;
-    } else {
-        message.textContent = "";
-        calendar.classList.remove("hidden");
-    }
+noBtn.addEventListener('click', () => {
+  noCount++;
+  if (noCount < messages.length) {
+    alert(messages[noCount - 1]);
+    moveButton();
+  } else {
+    calendar.classList.remove('hidden');
+  }
 });
 
-yesBtn.addEventListener("click", () => {
-    message.textContent = "Yay! Best decision ever! 🎉";
-    music.play();
+yesBtn.addEventListener('click', () => {
+  finalMessage.classList.remove('hidden');
+  calendar.classList.add('hidden');
+  selectedDate.textContent = new Date().toLocaleDateString();
 });
 
-datePicker.addEventListener("change", () => {
-    message.textContent = `Great! Our special day is set for ${datePicker.value}! ❤️`;
+datePicker.addEventListener('change', () => {
+  finalMessage.classList.remove('hidden');
+  selectedDate.textContent = datePicker.value;
 });
+
+function moveButton() {
+  const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+  const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+  noBtn.style.position = 'absolute';
+  noBtn.style.left = `${x}px`;
+  noBtn.style.top = `${y}px`;
+}
+
+// Play background music
+music.play();
