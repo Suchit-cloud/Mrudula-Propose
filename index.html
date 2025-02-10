@@ -3,29 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Propose Day - Chimani 🐥</title>
+    <title>Special Proposal</title>
     <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1 class="title">Will you be my forever Chimani? 🐥💖</h1>
-        <p id="message" class="message">Choose wisely! 😏</p>
-        <div class="buttons">
-            <button id="yes-button">Yes 💖</button>
-            <button id="no-button">No ❌</button>
+        <h1>Hey Chimani! 🐥</h1>
+        <p>Will you go out with me?</p>
+        <div class="button-container">
+            <button id="yes-btn">Yes</button>
+            <button id="no-btn">No</button>
         </div>
+        <p id="response-message"></p>
         <div id="calendar-container" class="hidden">
-            <p>Select the date when you will say 'Yes' 😉</p>
+            <p>Fine, pick a date then! 📅</p>
             <input type="date" id="date-picker">
         </div>
-        <p id="final-message" class="hidden">Best Decision Ever! 🎉💑</p>
     </div>
-
-    <!-- Background Music -->
-    <audio id="background-music" autoplay loop>
-        <source src="romantic_music.mp3" type="audio/mp3">
+    <audio id="background-music" loop>
+        <source src="music.mp3" type="audio/mp3">
     </audio>
-
-    <script src="script.js"></script>
 </body>
 </html>
