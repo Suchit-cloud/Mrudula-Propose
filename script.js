@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const message = document.getElementById("message");
     const calendarContainer = document.getElementById("calendar-container");
     const datePicker = document.getElementById("date-picker");
+    const finalMessage = document.getElementById("final-message");
     const music = document.getElementById("background-music");
 
     let noClickCount = 0;
@@ -16,12 +17,13 @@ document.addEventListener("DOMContentLoaded", function () {
         "Fine, fine. If you're this stubborn, then **pick a date!** 🗓️"
     ];
 
-    // Play music when page loads
+    // Play background music
     music.play().catch(() => console.log("User interaction needed to play music."));
 
     yesButton.addEventListener("click", function () {
         message.innerHTML = "Yay! You made the right choice! 🎉💖";
-        calendarContainer.style.display = "none"; // Hide calendar if shown
+        calendarContainer.style.display = "none";
+        finalMessage.classList.remove("hidden");
     });
 
     noButton.addEventListener("click", function () {
@@ -33,6 +35,11 @@ document.addEventListener("DOMContentLoaded", function () {
             calendarContainer.style.display = "block";
         }
         noClickCount++;
+    });
+
+    datePicker.addEventListener("change", function () {
+        finalMessage.innerHTML = "Great! I’ll be waiting for this special day! 🥰";
+        finalMessage.classList.remove("hidden");
     });
 
     function moveButton(button) {
