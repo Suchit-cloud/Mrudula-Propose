@@ -23,17 +23,6 @@ h1 {
   margin-bottom: 20px;
 }
 
-.doodles {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
-}
-
-.doodle {
-  width: 100px;
-  height: auto;
-}
-
 .buttons {
   display: flex;
   justify-content: center;
