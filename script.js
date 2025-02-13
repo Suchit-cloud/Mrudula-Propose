@@ -80,3 +80,6 @@ function moveButton() {
   noBtn.style.left = `${x}px`;
   noBtn.style.top = `${y}px`;
 }
+// Play background music
+const music = document.getElementById('background-music');
+music.play();
