@@ -3,8 +3,6 @@ const yesBtn = document.getElementById('yes-btn');
 const calendar = document.getElementById('calendar');
 const datePicker = document.getElementById('date-picker');
 const finalMessage = document.getElementById('final-message');
-const selectedDate = document.getElementById('selected-date');
-const music = document.getElementById('background-music');
 
 let noCount = 0;
 const messages = [
@@ -28,7 +26,7 @@ noBtn.addEventListener('click', () => {
 yesBtn.addEventListener('click', () => {
   finalMessage.classList.remove('hidden');
   calendar.classList.add('hidden');
-  selectedDate.textContent = new Date().toLocaleDateString();
+  finalMessage.innerHTML = `<h2>Yay! You just secured a lifetime partnership with the best shareholder (Me) 💍. Now, let’s finalize the merger agreement 😘.</h2>`;
 });
 
 datePicker.addEventListener('change', () => {
@@ -82,6 +80,3 @@ function moveButton() {
   noBtn.style.left = `${x}px`;
   noBtn.style.top = `${y}px`;
 }
-
-// Play background music
-music.play();
