@@ -3,6 +3,8 @@ const yesBtn = document.getElementById('yes-btn');
 const calendar = document.getElementById('calendar');
 const datePicker = document.getElementById('date-picker');
 const finalMessage = document.getElementById('final-message');
+const musicControl = document.getElementById('music-control');
+const music = document.getElementById('background-music');
 
 let noCount = 0;
 const messages = [
@@ -12,6 +14,32 @@ const messages = [
   "Come on, we’ve judged people together in Domino’s, and you still doubt our compatibility? 😤",
   "Okay fine, you’re really stubborn… but you have no choice. Just pick a date! 😏"
 ];
+
+// Play music when the user interacts with the page
+function playMusic() {
+  music.play()
+    .then(() => {
+      musicControl.textContent = "🎵 Pause Music";
+    })
+    .catch((error) => {
+      console.error("Autoplay was blocked. Please click 'Play Music' to start the music.");
+    });
+}
+
+// Add event listeners for "Yes" and "No" buttons to start music
+yesBtn.addEventListener('click', playMusic);
+noBtn.addEventListener('click', playMusic);
+
+// Toggle music playback when the music control button is clicked
+musicControl.addEventListener('click', () => {
+  if (music.paused) {
+    music.play();
+    musicControl.textContent = "🎵 Pause Music";
+  } else {
+    music.pause();
+    musicControl.textContent = "🎵 Play Music";
+  }
+});
 
 noBtn.addEventListener('click', () => {
   noCount++;
@@ -80,18 +108,3 @@ function moveButton() {
   noBtn.style.left = `${x}px`;
   noBtn.style.top = `${y}px`;
 }
-// Play background music
-const music = document.getElementById('background-music');
-music.play();
-const musicControl = document.getElementById('music-control');
-const music = document.getElementById('background-music');
-
-musicControl.addEventListener('click', () => {
-  if (music.paused) {
-    music.play();
-    musicControl.textContent = "🎵 Pause Music";
-  } else {
-    music.pause();
-    musicControl.textContent = "🎵 Play Music";
-  }
-});
