@@ -83,3 +83,15 @@ function moveButton() {
 // Play background music
 const music = document.getElementById('background-music');
 music.play();
+const musicControl = document.getElementById('music-control');
+const music = document.getElementById('background-music');
+
+musicControl.addEventListener('click', () => {
+  if (music.paused) {
+    music.play();
+    musicControl.textContent = "🎵 Pause Music";
+  } else {
+    music.pause();
+    musicControl.textContent = "🎵 Play Music";
+  }
+});
